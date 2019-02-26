@@ -21,6 +21,7 @@ public class MusicEvent {
       private String mState;
       private String mImageName;
 
+      // Getters and Setters
      public String getDate() {
       return mDate;
      }

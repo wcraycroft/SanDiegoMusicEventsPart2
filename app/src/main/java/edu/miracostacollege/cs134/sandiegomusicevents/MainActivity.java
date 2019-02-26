@@ -15,12 +15,19 @@ import java.util.List;
 import edu.miracostacollege.cs134.sandiegomusicevents.model.JSONLoader;
 import edu.miracostacollege.cs134.sandiegomusicevents.model.MusicEvent;
 
+/*
+ * This List Activity shows a list of all music events from the JSONLoader, using a custom layout.
+ * If an item is clicked, sends the selected event's information to EventDetailsActivity.
+ */
 public class MainActivity extends ListActivity {
 
+    // Declarations
     private ListView eventsListView;
-    // Create List of MusicEvents, loaded from JSON
+    // Model list declaration. Loaded from JSON
     List<MusicEvent> allMusicEvents;
 
+    // On application launch, instantiate music events model using JSONLoader class and set
+    // custom list adapter.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +39,7 @@ public class MainActivity extends ListActivity {
             Log.e("SD Music Events", "Error loading JSON" + e.getMessage());
         }
 
+        // Instantiate ListView using custom adapter
         eventsListView = findViewById(R.id.eventsListView);
         setListAdapter(new MusicEventListAdapter(this, R.layout.music_event_list_item, allMusicEvents));
         //setContentView(R.layout.activity_main);

@@ -12,6 +12,10 @@ import android.widget.TextView;
 import java.io.IOException;
 import java.io.InputStream;
 
+/*
+ * This activity displays the details for a selected event, including the event name, date, day,
+ * time, venue, city and state. The activity receives all text Strings from MainActivity.
+ */
 public class EventDetailsActivity extends AppCompatActivity {
 
     private ImageView eventImageView;
@@ -32,11 +36,6 @@ public class EventDetailsActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        // TODO: Update each individual TextView with intent data
-        String title = intent.getStringExtra("Artist");
-        String details = intent.getStringExtra("Details");
-        String fileName = title.replaceAll(" ", "") + ".png";
-
         // Link View objects
         eventImageView = findViewById(R.id.eventImageView);
         eventArtistTextView = findViewById(R.id.eventArtistTextView);
@@ -56,12 +55,14 @@ public class EventDetailsActivity extends AppCompatActivity {
         eventStateTextView.setText(intent.getStringExtra("State"));
 
         // Set ImageView
+        String title = intent.getStringExtra("ImageName");
         AssetManager am = getAssets();
         try {
-            InputStream stream = am.open(fileName);
+            InputStream stream = am.open(title);
             Drawable eventImage = Drawable.createFromStream(stream, title);
             eventImageView.setImageDrawable(eventImage);
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             Log.e(TAG, e.getMessage());
         }
 

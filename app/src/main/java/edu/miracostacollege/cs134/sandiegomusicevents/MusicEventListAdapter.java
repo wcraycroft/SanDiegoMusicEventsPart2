@@ -19,6 +19,10 @@ import java.util.List;
 
 import edu.miracostacollege.cs134.sandiegomusicevents.model.MusicEvent;
 
+/*
+ * This custom List Adapter consists of three Views: one ImageView of the artist or event, one
+ * TextView displaying the artist/event name, and one TextView displaying the event date.
+ * */
 public class MusicEventListAdapter extends ArrayAdapter<MusicEvent> {
 
     // Declare member variables to store parameters (context, resource id, List of <MusicEvent>
